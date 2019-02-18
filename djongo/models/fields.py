@@ -92,6 +92,8 @@ class ListField(FormlessField):
     empty_strings_allowed = False
 
     def get_db_prep_value(self, value, connection, prepared=False):
+        if prepared:
+            return value
         if not isinstance(value, list):
             raise ValueError(
                 f'Value: {value} must be of type list'
