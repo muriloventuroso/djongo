@@ -81,9 +81,8 @@ class FormlessField(Field):
     empty_strings_allowed = False
 
     def formfield(self, **kwargs):
-        raise TypeError(
-            'A Formless Field cannot be modified from Django Admin.'
-        )
+        defaults = {}
+        return super().formfield(**defaults)
 
 
 class ListField(FormlessField):
